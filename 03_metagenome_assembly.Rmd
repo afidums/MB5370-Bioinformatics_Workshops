@@ -1,0 +1,40 @@
+---
+title: "Workshop 3: Metagenome Assembly"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Bash chunks are a record of commands you ran in the Terminal. Knitting shows
+# them but doesn't run them again.
+knitr::opts_hooks$set(engine = function(options) {
+  if (options$engine == "bash") options$eval <- FALSE
+  options
+})
+```
+
+Notes for [Workshop 3](https://mb5370.bioinformatics.guide/workshop3.html). Run the commands for this workshop in the Terminal, from inside the folder named under each heading. Copy each command you run into a bash chunk.
+
+R chunks in this file run from the top of the repository, so give file paths from there, e.g. `flye_metagenome/mock/assembly_info.txt`.
+
+## Step 1: Examine reads
+
+Reads are linked into `raw_data/`.
+
+## Step 2: Assembly
+
+Commands run in `flye_metagenome/`.
+
+## Step 3: Basic assembly QC
+
+Commands run in `assembly_check/`.
+
+## Step 4: Binning
+
+Commands run in `metabat/`.
+
+## Step 5: Bin quality with CheckM
+
+Commands run in `checkm/`.

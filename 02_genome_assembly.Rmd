@@ -1,0 +1,36 @@
+---
+title: "Workshop 2: Genome Assembly"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Bash chunks are a record of commands you ran in the Terminal. Knitting shows
+# them but doesn't run them again.
+knitr::opts_hooks$set(engine = function(options) {
+  if (options$engine == "bash") options$eval <- FALSE
+  options
+})
+```
+
+Notes for [Workshop 2](https://mb5370.bioinformatics.guide/workshop2.html). Run the commands for this workshop in the Terminal, from inside the folder named under each heading. Copy each command you run into a bash chunk.
+
+## Redbean assembly
+
+Commands run in `redbean/`.
+
+## Flye assembly
+
+Commands run in `flye_genome/`.
+
+## Assembly graphs with Bandage
+
+## Assembly quality with QUAST
+
+Commands run in `quast/`.
+
+## Mystery repeat region (optional)
+
+Commands run in `repeat/`.

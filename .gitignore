@@ -1,0 +1,29 @@
+# R and RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Working folders
+# These fill up with reads, assemblies and other tool output, which are far too
+# big for git. Git ignores everything inside any folder except scripts (.sh and
+# .awk files) and the .gitkeep files that keep the empty folders in the
+# repository.
+/*/**
+!/*/**/
+!*.sh
+!*.awk
+!.gitkeep
+
+# Job logs and sequence files at the top of the repository
+slurm-*.out
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.fasta
+*.fa
+*.fna
+*.gfa
+*.bam
+*.sam

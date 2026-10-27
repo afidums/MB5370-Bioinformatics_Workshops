@@ -21,6 +21,26 @@ Notes for [Workshop 2](https://mb5370.bioinformatics.guide/workshop2.html). Run 
 
 Commands run in `redbean/`.
 
+```{r}
+# cat /pvol/data/amtp4/*_[012].fastq > amtp4.fastq <- using cat to link and join two fasta files 
+
+# running the assembly - wtdbg2 -x ont -g 5m -t 4 -i amtp4.fastq -fo amtp4 wtpoa-cns -t 4 -i amtp4.ctg.lay.gz -fo amtp4.ctg.fa - which uses the data for the initial assembly, this assembly took a few seconds 
+
+# assembly-stats amtp4.ctg.fa - inspecting assembly statistics 
+#the closer to the value 0, the more better the contiguity 
+#looking at the estimated completeness with the N# /sum 
+# 48075(N50)/3816930(sum) = 1.26% 
+# 33615(N60)/3816930(sum) = 0.88%
+# 28879(N70)/3816930(sum) = 0.76%
+# 21464(N80)/3816930(sum) = 0.56%
+# 13021(N90)/3816930(sum) = 0.34%
+# 2697(M100)/3816930(sum) = 0.07%
+
+
+
+```
+
+
 ## Flye assembly
 
 Commands run in `flye_genome/`.

@@ -42,13 +42,21 @@ Commands run in `redbean/`.
 # this assemblage for this one took far far longer (146 secs)
 
 #assembly-stats amtp4_20x.ctg.fa - looking at the stats 
+#for the first assembleged - n50 took n=23 (23 conguints) to cover 50% of the DNA sequence vs the 2nd assembledge took only 2 conguints to cover 50% of the DNA sequence 
+
 
 #Stats 
+
+#Flye Assembly 
+
 
 #bandage 
 # sequence more than the base pairs of the genome 
 ## typically nowhere near enough to assemble a genome - need to know those reads are randomely generated throughout the sequence and make sure there is proper overlap - need 50 to 100x coverage - sequencing 50 to 100x times 
 ### little piece with 30x depth(coverage) with longer pieces that have 6-7x depth, it is a repeat - all the conguits are passing through it - everytime it gets to assembly - the repeats all look the same (doesnt know how to connect pieces together because there is a repeating spot) - those repeats could be anywhere from the in the genome - puts certain bigger pieces together and says it has an edge that all connect to a repeat at some point 
+
+#coverage depth does not care about overlap - just how much of the genome being covered 
+#coverage extent does care about overlap - increases at a lower rate than depth if there is a lot of overlap 
 
 ```
 
@@ -56,6 +64,15 @@ Commands run in `redbean/`.
 ## Flye assembly
 
 Commands run in `flye_genome/`.
+
+```{r}
+#ln -s ../redbean/amtp4.fastq . <- creating files in fly_genome using this data set - then again with the 20x -> ln -s ../redbean/amtp4_20x.fastq . 
+
+#running a file that gets queued -> sbatch run_flye_small.sh 
+
+#squeue - to see the status of the queue 
+```
+
 
 ## Assembly graphs with Bandage
 

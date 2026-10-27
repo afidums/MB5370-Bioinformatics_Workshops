@@ -27,10 +27,22 @@ Replace the text below each heading with your own notes. Copy each command you r
 ## Basic unix commands
 
 Notes on `pwd`, `ls`, `cd` and how unix commands are put together.
+```{r}
+#pwd shows working currently working directory 
+#ls shows the files in the directory 
+#cd allows to change working directory
+```
 
 ## Viewing and searching files
 
 Notes on `cat`, `head`, `grep` and `man`.
+```{r}
+#cat - shows a certain file 
+#head - shows only the first few lines in the file (-2) means only first two line 
+#grep - use to fine matching specific strings in files (like control f)
+#man - opens up a command to see all the flags 
+```
+
 
 ## Sequence file formats
 

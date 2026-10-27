@@ -3,6 +3,7 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rproj
 
 # Working folders
 # These fill up with reads, assemblies and other tool output, which are far too

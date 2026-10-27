@@ -39,10 +39,16 @@ Commands run in `redbean/`.
 #cat /pvol/data/amtp4/*.fastq > amtp4_20x.fastq
 #wtdbg2 -x ont -g 5m -t 4 -i amtp4_20x.fastq -fo amtp4_20x
 #wtpoa-cns -t 4 -i amtp4_20x.ctg.lay.gz -fo amtp4_20x.ctg.fa - running an assemblege that is 20x the coverage 
-# this assemblage took around 43 seconds vs the first one taking around 7 seconds 
+# this assemblage for this one took far far longer (146 secs)
 
 #assembly-stats amtp4_20x.ctg.fa - looking at the stats 
 
+#Stats 
+
+#bandage 
+# sequence more than the base pairs of the genome 
+## typically nowhere near enough to assemble a genome - need to know those reads are randomely generated throughout the sequence and make sure there is proper overlap - need 50 to 100x coverage - sequencing 50 to 100x times 
+### little piece with 30x depth(coverage) with longer pieces that have 6-7x depth, it is a repeat - all the conguits are passing through it - everytime it gets to assembly - the repeats all look the same (doesnt know how to connect pieces together because there is a repeating spot) - those repeats could be anywhere from the in the genome - puts certain bigger pieces together and says it has an edge that all connect to a repeat at some point 
 
 ```
 

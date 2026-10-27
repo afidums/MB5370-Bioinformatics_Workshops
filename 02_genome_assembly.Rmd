@@ -36,6 +36,12 @@ Commands run in `redbean/`.
 # 13021(N90)/3816930(sum) = 0.34%
 # 2697(M100)/3816930(sum) = 0.07%
 
+#cat /pvol/data/amtp4/*.fastq > amtp4_20x.fastq
+#wtdbg2 -x ont -g 5m -t 4 -i amtp4_20x.fastq -fo amtp4_20x
+#wtpoa-cns -t 4 -i amtp4_20x.ctg.lay.gz -fo amtp4_20x.ctg.fa - running an assemblege that is 20x the coverage 
+# this assemblage took around 43 seconds vs the first one taking around 7 seconds 
+
+#assembly-stats amtp4_20x.ctg.fa - looking at the stats 
 
 
 ```

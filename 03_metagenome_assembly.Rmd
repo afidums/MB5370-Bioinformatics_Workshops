@@ -22,6 +22,10 @@ R chunks in this file run from the top of the repository, so give file paths fro
 ## Step 1: Examine reads
 
 Reads are linked into `raw_data/`.
+```{r}
+
+```
+
 
 ## Step 2: Assembly
 

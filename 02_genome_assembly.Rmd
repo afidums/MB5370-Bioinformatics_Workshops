@@ -116,6 +116,28 @@ Gaps = 0
 
 Commands run in `quast/`.
 
+```{r}
+# cat ../flye_genome/amtp4_20x/assembly.fasta | bioawk -c fastx '{print $name, length($seq)}' | sort -n -k2
+## to look at the contig sizes in the flye assembly - contig_59 and contig_10 are the two largest contigs 
+
+#samtools faidx ../flye_genome/amtp4_20x/assembly.fasta contig_59 contig_10 > flye_asm/vibrio.fasta
+##extractig the two largest contigs 
+
+#cat ../redbean/amtp4_20x.ctg.fa | bioawk -c fastx '{print $name, length($seq)}' | sort -n -k2
+#samtools faidx ../redbean/amtp4_20x.ctg.fa ctg1 ctg2 > redbean_asm/vibrio.fasta
+## samething but for redbean - ctg1 and ctg2 are the two largest conguints
+
+#ln -s ../flye_genome/amtp4_20x.fastq .
+##symbolic link to the original reads 
+
+#ln -s /pvol/data/amtp4/reference/vibrio .
+##symbolic link to reference assembly 
+
+#quast -o quast_vibrio redbean_asm/vibrio.fasta flye_asm/vibrio.fasta -L -t 4 --circos --glimmer -r vibrio/vibrio.fna --features  vibrio/vibrio.gff --nanopore amtp4_20x.fastq
+## running quast 
+```
+
+
 ## Mystery repeat region (optional)
 
 Commands run in `repeat/`.

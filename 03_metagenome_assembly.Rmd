@@ -23,6 +23,47 @@ R chunks in this file run from the top of the repository, so give file paths fro
 
 Reads are linked into `raw_data/`.
 ```{r}
+#cd ~/mb5370-workshops/raw_data
+#ln -s /pvol/data/metagenome_assembly/reads_R10_0.5.fastq.gz raw_reads.fastq.gz
+## symbolic link to rae reads file in the raw_data folder 
+
+#ls -l raw_data
+## using ls to make sure the link is correct for the raw data 
+
+#zcat raw_data/raw_reads.fastq.gz | head -n 40000 | bioawk -c fastx '{print $name,length($seq)}' > read_lengths.txt
+
+#lines underneath explain the code 
+# Unzips the raw data and sends the data to standard output
+##zcat raw_data/raw_reads.fastq.gz \
+# This is a pipe. It sends output from the previous command as input to the next command
+  ##| \
+# Here we select only the top 40k lines in the file. This equates to 10k reads. It should be plenty to get some stats
+ ## head -n 40000 | \
+# This is a small bioawk program. It prints the name of each sequence followed by its length
+  ##bioawk -c fastx '{print $name,length($seq)}' \
+# Send outputs to a file called read_lengths.txt
+##  > read_lengths.txt
+
+#making a graph to visualise the data 
+library(tidyverse)
+
+rl_data <- read_tsv("read_lengths.txt",col_names = c("id","length"), show_col_types = FALSE)
+
+ggplot(rl_data, aes(x=length/1000)) + 
+  geom_histogram(binwidth = 2) +
+  xlab("Read Length Kb") + ylab("Number of Reads")
+
+#Figure 1: Histogram of read lengths in the mock nanopore sequencing dataset
+
+# calculating read N50 
+total_len <- sum(rl_data$length)
+
+rl_data |> 
+  arrange(desc(length)) |> 
+  mutate(cumsum = cumsum(length)) |> 
+  filter(cumsum>total_len/2) |> 
+  head(n=1)
+
 
 ```
 

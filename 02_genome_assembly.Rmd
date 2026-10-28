@@ -68,13 +68,46 @@ Commands run in `flye_genome/`.
 ```{r}
 #ln -s ../redbean/amtp4.fastq . <- creating files in fly_genome using this data set - then again with the 20x -> ln -s ../redbean/amtp4_20x.fastq . 
 
-#running a file that gets queued -> sbatch run_flye_small.sh 
+#running a file that gets queued -> sbatch run_flye_small.sh -> it gives a queue number - mine being 339 
 
 #squeue - to see the status of the queue 
+
+# tail slurm-XXX.out - running the created file from post queue - xxx being batch number - the 339 
+
+#assembly-stats amtp4/assembly.fasta - to open up the new file created to look at the stats 
+## it took 16 conguints to reach 50% coverage and 77 conguints to reach 100% coverage 
+#stats
+#sum = 5192180, n = 77, ave = 67430.91, largest = 374326
+#N50 = 119681, n = 16
+#N60 = 99731, n = 20
+#N70 = 73541, n = 26
+#N80 = 48300, n = 35
+#N90 = 31578, n = 48
+#N100 = 2777, n = 77
+#N_count = 0
+#Gaps = 0
+#Contiguity -  
+# and completeness - N##/sum (estimated) 
+
+#looking at 20x stats 
+sum = 7478765, n = 53, ave = 141108.77, largest = 3378345
+N50 = 1775300, n = 2
+N60 = 1775300, n = 2
+N70 = 113574, n = 3
+N80 = 76179, n = 11
+N90 = 44111, n = 25
+N100 = 5575, n = 53
+N_count = 0
+Gaps = 0
+#the 20x reqiures far less conguints than the smaller database to reach the same coverage 
 ```
 
 
 ## Assembly graphs with Bandage
+```{r}
+#
+```
+
 
 ## Assembly quality with QUAST
 

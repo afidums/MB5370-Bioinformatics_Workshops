@@ -105,7 +105,10 @@ Gaps = 0
 
 ## Assembly graphs with Bandage
 ```{r}
-# 
+# for 20x there is a full circular chromasome (bacteria) while for the small assembledge only had a fragments all attached to the repeating 
+#the repeating segment now connects the two ends of the bacterial chromosome together into a circle 
+#the plasmids inside the bacteria are of the really small segments of DNA probably (the tiny circular DNAs)
+#the small dataset has crisscrossing due to a repeating segment and the system doesnt have enough info to place it where it belongs 
 ```
 
 

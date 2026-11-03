@@ -65,12 +65,20 @@ rl_data |>
   head(n=1)
 
 
-```
 
+```
 
 ## Step 2: Assembly
 
 Commands run in `flye_metagenome/`.
+
+```{r}
+#Step 2
+#running the batch file 
+#sbatch run_flye.sh 
+#tail -f slurm-XXX.out to monitor job output 
+```
+
 
 ## Step 3: Basic assembly QC
 
@@ -83,3 +91,7 @@ Commands run in `metabat/`.
 ## Step 5: Bin quality with CheckM
 
 Commands run in `checkm/`.
+
+
+## Writing Eportfolio 
+#

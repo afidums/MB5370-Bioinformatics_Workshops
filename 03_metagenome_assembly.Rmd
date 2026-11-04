@@ -109,7 +109,48 @@ BEGIN {
 Commands run in `assembly_check/`.
 
 ```{r}
+#cat ../flye_metagenome/mock/assembly.fasta | bioawk -c fastx -f ../gc.awk
+#^ using gc.awk to print GC and lengths for the assembly 
 
+#sending the outputs into a file 
+#cat ../flye_metagenome/mock/assembly.fasta | bioawk -c fastx -f ../gc.awk > assembly.gc.tsv
+
+#making a graph - reading info first 
+gc <- read_tsv("assembly_check/assembly.gc.tsv",col_names = c("#seq_name","length","GC"))
+info <- read_tsv("flye_metagenome/mock/assembly_info.txt")
+
+#joining the two dataframes because they both include #seq_name 
+gc_info <- info |> 
+  left_join(gc)
+
+#drawing a histogram by GC content 
+gc_info |> 
+  ggplot(aes(x=GC)) + geom_histogram() + ylab("Number of contigs")
+
+#Figure 2: Histogram of GC content values for assembled contigs in a flye assembly of the mock community dataset.
+
+#filtering the data - renoving contigs with unrealistically high GC content and very high coverage depth (prob repeats)
+gc_info |> 
+  filter(GC<0.8) |> 
+  filter(cov.<25) |> 
+  ggplot(aes(x=GC,y=cov.)) + geom_point(aes(size=length)) + ylab("Coverage depth")
+#Figure 3: Coverage and GC content of assembled contigs in the mock community assembly. Contig lengths are shown through point size.
+
+#3.4 - the cluster around GC ~0.65 and coverage around 5 to 10 belongs to a species that could be contaminit or plasmid DNA as they are not full circular DNA - so not a specific bacteria - really tiny fragments 
+
+# adding labels to the contigs/dots 
+#library(ggrepel)
+library(ggrepel)
+gc_info |> 
+  filter(GC<0.8) |> 
+  filter(cov.<25) |> 
+  ggplot(aes(x=GC,y=cov.)) + geom_point(aes(size=length)) + geom_label_repel(aes(label=`#seq_name`))
+#Figure 4: Coverage and GC content of assembled contigs in the mock community assembly. Contig lengths are shown through point size. Only contigs with less than 25x coverage and less than 80% GC content are shown.
+
+#calculate the total length of our reference sequences. This command builds on one we ran earlier to list the size and GC content of reference chromosomes, but this time we have added another very simple awk program to take the sum of the second column.
+#cat /pvol/data/mg/refs/*.fna | bioawk -c fastx -f gc.awk | awk '{sum+=$2}END{print sum}'
+
+#3.5 - 
 ```
 
 
@@ -133,3 +174,6 @@ Commands run in `checkm/`.
 # discussion - ex. the helps us understand an important coral disease because XXX and XXX. 
 #include figures and captions - use as appropriate - download assembly graph and use the image of the assembeld contigs, plot of relative abundance of the BBD metagenome, plotting completeness of the metagenome 
 #want most complete genome/bin - want to compare to checkem - 
+
+## what proper means (program) - takes from assembling genome to understanding what the genome does 
+## 

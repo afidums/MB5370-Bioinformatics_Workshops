@@ -77,8 +77,10 @@ Commands run in `flye_metagenome/`.
 #running the batch file 
 #sbatch run_flye.sh 
 #tail -f slurm-XXX.out to monitor job output 
-#it took 
-#3.1 - 
+#it took ~13 minutes 
+#3.1 - the largest contig from the bandage is 4,681,066 bp long - edge_42 - contig 42
+#3.2 - more adbundant of a species - more DNA to sequence so you will get a more complete genome sequence - so the largest DNA sequence - so the same species as from 3.1 
+#3.3 - the largest is vibrio alfacsensis and the 2nd largest is likely to be a different species as it is a complete genome 
 #creating a plain text and pasting this - to calculate GC content and size 
 # Bioawk script for calculating gc and printing name,length,GC
 BEGIN {
@@ -98,12 +100,18 @@ BEGIN {
 #^ testing the awk program to print GC content and contig lengths for chromosomes for all the files in -> ls /pvol/data/mg/refs/*.fna
 # CP003591.1      4681111 0.584631 / (chromasome) (contig length) (GC Concent %)
 #GC (the amino acids - looking at a specific bond - helps identify specific sequence because GC bonds are less abundant )
+
 ```
 
 
 ## Step 3: Basic assembly QC
 
 Commands run in `assembly_check/`.
+
+```{r}
+
+```
+
 
 ## Step 4: Binning
 

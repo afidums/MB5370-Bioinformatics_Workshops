@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --time=360
-#SBATCH --ntasks=4 --mem=6gb
+#SBATCH --cpus-per-task=4 --mem=6gb
 
 echo "Starting flye in $(pwd) at $(date)"
 

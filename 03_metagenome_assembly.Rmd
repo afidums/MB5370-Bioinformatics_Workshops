@@ -77,6 +77,27 @@ Commands run in `flye_metagenome/`.
 #running the batch file 
 #sbatch run_flye.sh 
 #tail -f slurm-XXX.out to monitor job output 
+#it took 
+#3.1 - 
+#creating a plain text and pasting this - to calculate GC content and size 
+# Bioawk script for calculating gc and printing name,length,GC
+BEGIN {
+    OFS="\t"
+}
+
+{
+    l=length($seq)
+    ngc=gsub("[cgCG]","",$seq)
+    nat=gsub("[taTA]","",$seq)
+    print $name,l,ngc/(ngc+nat)
+}
+
+#saving as gc.awk 
+# cd ~/mb5370-workshops
+#cat /pvol/data/mg/refs/*.fna | bioawk -c fastx -f gc.awk
+#^ testing the awk program to print GC content and contig lengths for chromosomes for all the files in -> ls /pvol/data/mg/refs/*.fna
+# CP003591.1      4681111 0.584631 / (chromasome) (contig length) (GC Concent %)
+#GC (the amino acids - looking at a specific bond - helps identify specific sequence because GC bonds are less abundant )
 ```
 
 
@@ -94,4 +115,13 @@ Commands run in `checkm/`.
 
 
 ## Writing Eportfolio 
-#
+#want to include summary of assembly stats (N50) - document what you did 
+#ex. flye was run with the slurm script, 'run_flye_bdd_sh' / [run_flye_bdd.sh] (flye/run_flye_bdd.sh) <- links file,  -> it ran for XX minutes and final assembly was then assessed to identify the longest contigs
+#would then go to index file and knit it with all the content you wrote - creates an html file 
+#^ is documenting individual sites but the eportfolio is a bit more 
+# need to add 3 sections to top of index file - background, results and discussion 
+# background - ex. black hand disease is a polymicrobial coral disease
+# results - ex. the most abundant and best assembled taxa is the BDD metagenome were XX, and XX 
+# discussion - ex. the helps us understand an important coral disease because XXX and XXX. 
+#include figures and captions - use as appropriate - download assembly graph and use the image of the assembeld contigs, plot of relative abundance of the BBD metagenome, plotting completeness of the metagenome 
+#want most complete genome/bin - want to compare to checkem - 

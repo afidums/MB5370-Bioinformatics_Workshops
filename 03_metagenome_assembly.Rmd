@@ -150,7 +150,14 @@ gc_info |>
 #calculate the total length of our reference sequences. This command builds on one we ran earlier to list the size and GC content of reference chromosomes, but this time we have added another very simple awk program to take the sum of the second column.
 #cat /pvol/data/mg/refs/*.fna | bioawk -c fastx -f gc.awk | awk '{sum+=$2}END{print sum}'
 
-#3.5 - 
+#3.5 - total length of the assembly by taking the sym of the contig lengths column 
+contig_sum <- sum(gc_info$length)
+contig_sum
+#sum = 18326991
+#proportion of reference sequence = contig sum/total length 
+prop <- contig_sum/total_len
+prop
+#proportion of the reference sequence is 12.3% 
 ```
 
 
